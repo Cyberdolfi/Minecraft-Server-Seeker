@@ -8,7 +8,7 @@ echo "           MINECRAFT SERVER SEEKER"
 echo "=============================================="
 echo -e "\e[0m"
 INSTALL_DIR="/opt/minecraft-server-seeker"
-REPO_URL="https://github.com/<user>/<repo>.git"
+REPO_URL="https://github.com/Cyberdolfi/Minecraft-Server-Seeker.git"
 REPO_NAME="minecraft-server-seeker"
 LOGS_FILE="logs.txt"
 if [ -d "$INSTALL_DIR" ]; then
