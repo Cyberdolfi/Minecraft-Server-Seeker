@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 IFS=$'\n\t'
-
-# 🧹 Clear terminal
 clear
-
-# 🎨 ASCII Logo
 echo -e "\e[1;36m"
 echo "=============================================="
 echo "           MINECRAFT SERVER SEEKER"
 echo "=============================================="
 echo -e "\e[0m"
-
-# 📍 Check if installed
 INSTALL_DIR="/opt/minecraft-server-seeker"
 REPO_URL="https://github.com/<user>/<repo>.git"
 REPO_NAME="minecraft-server-seeker"
-
+LOGS_FILE="logs.txt"
 if [ -d "$INSTALL_DIR" ]; then
   echo -e "\e[33mServer Seeker already seems to be installed at: $INSTALL_DIR\e[0m"
   echo "Choose an option:"
@@ -35,8 +28,6 @@ if [ -d "$INSTALL_DIR" ]; then
     *) echo "Invalid choice"; exit 1 ;;
   esac
 fi
-
-# 📦 Menu
 echo ""
 echo "Choose an action:"
 echo "  1) Install"
@@ -51,8 +42,6 @@ if [[ "$MAIN_CHOICE" == "5" ]]; then
   echo "Bye 👋"
   exit 0
 fi
-
-# 🧠 Check OS
 OS_ID=$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
 OS_VER=$(grep '^VERSION_ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
 
@@ -68,47 +57,39 @@ elif [[ "$OS_ID" != "ubuntu" && "$OS_ID" != "debian" ]]; then
   exit 1
 fi
 
-# 📂 Ask install path
 read -e -p "Enter installation path (default: /opt/minecraft-server-seeker): " USER_PATH
 INSTALL_DIR="${USER_PATH:-/opt/minecraft-server-seeker}"
 
-# ✅ Begin install
 if [[ "$MAIN_CHOICE" == "1" ]]; then
   echo "🚀 Starting installation..."
 
-  # Update system
-  sudo apt update -qq > /dev/null
-  sudo apt full-upgrade -y -qq > /dev/null
+  sudo apt update -qq > $LOGS_FILE
+  sudo apt full-upgrade -y -qq > $LOGS_FILE
 
-  # Install git
-  if ! command -v git &> /dev/null; then
+  if ! command -v git &> $LOGS_FILE; then
     echo "🔧 Installing Git..."
-    sudo apt -y install git > /dev/null
+    sudo apt -y install git > $LOGS_FILE
   fi
 
-  # Install Python 3.13
-  if ! command -v python3.13 &> /dev/null; then
+  if ! command -v python3.13 &> $LOGS_FILE; then
     echo "🐍 Installing Python 3.13..."
-    sudo add-apt-repository ppa:deadsnakes/ppa -y > /dev/null 2>&1 || true
+    sudo add-apt-repository ppa:deadsnakes/ppa -y > $LOGS_FILE 2>&1 || true
     sudo apt update -qq > /dev/null
-    sudo apt install -y python3.13 python3.13-venv python3-pip > /dev/null
+    sudo apt install -y python3.13 python3.13-venv python3-pip > $LOGS_FILE
   fi
 
-  # Check pip3
-  if ! command -v pip3 &> /dev/null; then
+  if ! command -v pip3 &> $LOGS_FILE; then
     echo "📦 Installing pip3..."
-    sudo apt install -y python3-pip > /dev/null
+    sudo apt install -y python3-pip > $LOGS_FILE
   fi
 
-  # Clone repo
   echo "📥 Cloning repository..."
-  sudo git clone "$REPO_URL" "$INSTALL_DIR" > /dev/null
+  sudo git clone "$REPO_URL" "$INSTALL_DIR" > $LOGS_FILE
   sudo chown -R $USER:$USER "$INSTALL_DIR"
 
-  # Install Python dependencies
   echo "📦 Installing Python requirements..."
-  python3.13 -m pip install --upgrade pip > /dev/null
-  python3.13 -m pip install -r "$INSTALL_DIR/requirements.txt" > /dev/null
+  python3.13 -m pip install --upgrade pip > $LOGS_FILE
+  python3.13 -m pip install -r "$INSTALL_DIR/requirements.txt" > $LOGS_FILE
 
   echo "✅ Installation complete!"
   echo "To run the tool:"
@@ -126,14 +107,14 @@ elif [[ "$MAIN_CHOICE" == "3" ]]; then
   echo "🔄 Updating..."
   cd "$INSTALL_DIR"
   git pull origin main
-  python3.13 -m pip install -r requirements.txt > /dev/null
+  python3.13 -m pip install -r requirements.txt > $LOGS_FILE
   echo "✅ Updated!"
   exit 0
 
 elif [[ "$MAIN_CHOICE" == "4" ]]; then
   echo "🍚 Installing MySQL..."
-  sudo apt update -qq > /dev/null
-  sudo apt install -y mysql-server > /dev/null
+  sudo apt update -qq > $LOGS_FILE
+  sudo apt install -y mysql-server > $LOGS_FILE
   echo "✅ MySQL installed."
   exit 0
 
