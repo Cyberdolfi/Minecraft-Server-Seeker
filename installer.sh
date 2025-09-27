@@ -61,21 +61,19 @@ read -e -p "Enter installation path (default: /opt/minecraft-server-seeker): " U
 INSTALL_DIR="${USER_PATH:-/opt/minecraft-server-seeker}"
 
 if [[ "$MAIN_CHOICE" == "1" ]]; then
-  echo "🚀 Starting installation..."
-
-  sudo apt update -qq > $LOGS_FILE
-  sudo apt full-upgrade -y -qq > $LOGS_FILE
+  echo "[Install] 🚀 Starting installation..."
+  echo "[Install] Updaten all your packages..."
+  sudo apt update > $LOGS_FILE
+  sudo apt full-upgrade -y > $LOGS_FILE
 
   if ! command -v git &> $LOGS_FILE; then
-    echo "🔧 Installing Git..."
+    echo "[Install] 🔧 Installing Git..."
     sudo apt -y install git > $LOGS_FILE
   fi
 
-  if ! command -v python3.13 &> $LOGS_FILE; then
-    echo "🐍 Installing Python 3.13..."
-    sudo add-apt-repository ppa:deadsnakes/ppa -y > $LOGS_FILE 2>&1 || true
-    sudo apt update -qq > /dev/null
-    sudo apt install -y python3.13 python3.13-venv python3-pip > $LOGS_FILE
+  if ! command -v python3 &> $LOGS_FILE; then
+    echo "[Install] 🐍 Installing Python 3..."
+    sudo apt install -y python3 python3-pip
   fi
 
   if ! command -v pip3 &> $LOGS_FILE; then
@@ -94,7 +92,7 @@ if [[ "$MAIN_CHOICE" == "1" ]]; then
   echo "✅ Installation complete!"
   echo "To run the tool:"
   echo "cd $INSTALL_DIR"
-  echo "python3.13 main.py --help"
+  echo "python3 main.py --help"
   exit 0
 
 elif [[ "$MAIN_CHOICE" == "2" ]]; then
