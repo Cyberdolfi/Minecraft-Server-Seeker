@@ -13,22 +13,22 @@ REPO_URL="https://github.com/Cyberdolfi/Minecraft-Server-Seeker.git"
 REPO_NAME="minecraft-server-seeker"
 LOGS_FILE="logs.txt"
 
-#if [ -d "$INSTALL_DIR/ServerSeeker" ]; then
-#  echo -e "\e[33mServer Seeker already seems to be installed at: $INSTALL_DIR\e[0m"
-#  echo "Choose an option:"
-#  echo "  1) Cancel"
-#  echo "  2) Continue anyway"
-#  echo "  3) Reinstall"
+if [ -d "$INSTALL_DIR/ServerSeeker" ]; then
+  echo -e "\e[33mServer Seeker already seems to be installed at: $INSTALL_DIR\e[0m"
+  echo "Choose an option:"
+  echo "  1) Cancel"
+  echo "  2) Continue anyway"
+  echo "  3) Reinstall"
 
-#  read -p "Your choice [1-3]: " EXISTING_CHOICE
-#  case $EXISTING_CHOICE in
-#    1) echo "Cancelled."; exit 0 ;;
-#    2) echo "Continuing..." ;;
-#    3) echo "Reinstalling..."
-#       sudo rm -rf "$INSTALL_DIR"
-#       ;;
-#    *) echo "Invalid choice"; exit 1 ;;
-#  esac
+  read -p "Your choice [1-3]: " EXISTING_CHOICE
+  case $EXISTING_CHOICE in
+    1) echo "Cancelled."; exit 0 ;;
+    2) echo "Continuing..." ;;
+    3) echo "Reinstalling..."
+       sudo rm -rf "$INSTALL_DIR"
+       ;;
+    *) echo "Invalid choice"; exit 1 ;;
+    esac
 fi
 echo ""
 echo "Choose an action:"
