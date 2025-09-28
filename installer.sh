@@ -29,7 +29,6 @@ if [ -d "$INSTALL_DIR/ServerSeeker" ]; then
        ;;
     *) echo "Invalid choice"; exit 1 ;;
     esac
-fi
 echo ""
 echo "Choose an action:"
 echo "  1) Install"
