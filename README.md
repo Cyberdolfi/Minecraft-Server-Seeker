@@ -2,12 +2,11 @@
 
 > [!NOTE]
 > Languages:  
-> **[[🇩🇪] Deutsch](./README_de.md)**  
+> **[🇩🇪] Deutsch (Kommt bald)**  
 > **[[🇬🇧] *English*](./README.md)**
 
-[![GitHub Dowloads](https://shields.io/github/downloads/Dolfirobots/OnlyProxy/total?label=Downloads&logoColor=Green&color=Blue&style=flat)](https://github.com/Dolfirobots/OnlyProxy/releases)
-[![GitHub Release](https://img.shields.io/github/v/release/Dolfirobots/OnlyProxy?color=Green)](https://github.com/Dolfirobots/OnlyProxy/releases "OnlyProxy Releases")
-[![Discord](https://img.shields.io/discord/1079052573845241877.svg?logo=discord&logoColor=Green&color=Blue&labelColor=Green&label=Discord)](https://discord.gg/dxZTGpPbkd "Discord")
+[![GitHub Dowloads](https://shields.io/github/downloads/Cyberdolfi/Minecraft-Server-Seeker/total?label=Downloads&logoColor=Green&color=Blue&style=flat)](https://github.com/Cyberdolfi/Minecraft-Server-Seeker/releases)
+[![Discord](https://img.shields.io/discord/1421594734442319996.svg?logo=discord&logoColor=Green&color=Blue&labelColor=Green&label=Discord)](https://discord.gg/4wHFzBjDTY "Discord")
 
 > [!NOTE]
 > This Project is currently under alpha versions!
@@ -45,37 +44,6 @@ For installation, go to our [WIKI]()
 
 ---
 
-## 🛡️ Permissions
-
-There is one permission for commands like `/onlyproxy reload|version`:
-
-```
-onlyproxy.commands
-```
-
----
-
-## 📑 Logs
-
-The plugin automatically creates log entries when someone tries to join without a proxy (or in general).  
-You can find the logs here:
-
-```
-/plugins/OnlyProxy/logs/
-```
-
-### Example log
-> [!NOTE]  
-> The IPs in this example are randomly generated
-
-```
-log_2025-08-25.log:
-
-[12:03:12] [PASSED] Playername: TestPlayer | Player IP: 12.122.12.12 | Proxy IP: 132.13.12.21  
-[15:09:32] [BLOCKED] Playername: HackerPlayer | Player IP: 32.223.23.23 | Proxy IP: 300.30.300.30
-```
----
-
 ## 📜 License
 
 This project is licensed under the [MIT License](./LICENSE).
@@ -84,9 +52,5 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## 🤝 Contributing
 
-* Found a bug? → [Create an issue](https://github.com/Dolfirobots/OnlyProxy/issues)  
-* Have ideas or suggestions? → Join my [Discord](https://discord.gg/dxZTGpPbkd "Discord")
-
----
-
-[![](https://bstats.org/signatures/bukkit/OnlyProxy.svg)](https://bstats.org/plugin/bukkit/OnlyProxy)
+* Found a bug? → [Create an issue](https://github.com/Cyberdolfi/Minecraft-Server-Seeker/issues)  
+* Have ideas or suggestions? → Join my [Discord](https://discord.gg/4wHFzBjDTY "Discord")
